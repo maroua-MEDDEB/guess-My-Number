@@ -1,10 +1,14 @@
 'use strict';
 
-const guessNumber = Math.floor(Math.random()*20)+1;
+let guessNumber = Math.floor(Math.random()*20)+1;
+let score = 20; //notre score initial
 
 document.querySelector('.check').addEventListener('click',()=>{
+
     //récupérer la valeur saisie
     const valueInputNumber = Number(document.querySelector('.guess').value);
+    document.querySelector('.number').textContent = valueInputNumber; // afficher le nombre exact (le nombre récupéré de l'input)
+
     console.log('clic ' + valueInputNumber);
 
     //message d'erreur
@@ -12,19 +16,36 @@ document.querySelector('.check').addEventListener('click',()=>{
 
     if(valueInputNumber <1){
         messageError;
+        document.querySelector('.number').textContent = '?'; // afficher le nombre exact (le nombre récupéré de l'input)
+      
     }else if(valueInputNumber>20){
         messageError;
+       
+
     }else if(!valueInputNumber){
-        document.querySelector('.message').textContent="the value is not a Number!!!"
+        document.querySelector('.message').textContent="the value is not a Number!!!";
+        document.querySelector('.number').textContent = '?'; // afficher le nombre exact (le nombre récupéré de l'input)
+
+
     }else{
         document.querySelector('.message').textContent ="start guessing...";
+        
         if(valueInputNumber > guessNumber){
             document.querySelector('.message').textContent ="Your Number is Low";
-        }else if(valueInputNumber < guessNumber){
+            score--;
+            document.querySelector('.score').textContent= score--;
+            console.log('diminue');
+             }else if(valueInputNumber < guessNumber){
             document.querySelector('.message').textContent ="Your Number is Less";
+            score--;
+            document.querySelector('.score').textContent= score--;
+            console.log('diminue');         
         }else{
             document.querySelector('.message').textContent ="greate, Wright Number!"; //message de comfirmation
             document.querySelector('.number').textContent = valueInputNumber; // afficher le nombre exact (le nombre récupéré de l'input)
+            document.querySelector('.number').style.width = '30rem';
+            document.querySelector('.score').textContent='20';
+            document.querySelector('body').style.backgroundColor='green';
 
         }
     }
