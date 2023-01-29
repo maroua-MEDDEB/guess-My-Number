@@ -34,12 +34,18 @@ document.querySelector('.check').addEventListener('click',()=>{
             document.querySelector('.message').textContent ="Your Number is Low";
             score--;
             document.querySelector('.score').textContent= score--;
-            console.log('diminue');
+            if(score<0){
+                document.querySelector('.score').textContent= "0";
+                document.querySelector('.message').textContent= "Sorry, you Lost!";
+            }
              }else if(valueInputNumber < guessNumber){
             document.querySelector('.message').textContent ="Your Number is Less";
             score--;
             document.querySelector('.score').textContent= score--;
-            console.log('diminue');         
+            if(score<0){
+                document.querySelector('.score').textContent= "0";
+                document.querySelector('.message').textContent= "Sorry, you Lost!";
+            }
         }else{
             document.querySelector('.message').textContent ="greate, Wright Number!"; //message de comfirmation
             document.querySelector('.number').textContent = valueInputNumber; // afficher le nombre exact (le nombre récupéré de l'input)
