@@ -23,7 +23,9 @@ document.querySelector('.check').addEventListener('click',()=>{
         }else if(valueInputNumber < guessNumber){
             document.querySelector('.message').textContent ="Your Number is Less";
         }else{
-            document.querySelector('.message').textContent ="greate, it is the Wright Number :D ";
+            document.querySelector('.message').textContent ="greate, Wright Number!"; //message de comfirmation
+            document.querySelector('.number').textContent = valueInputNumber; // afficher le nombre exact (le nombre récupéré de l'input)
+
         }
     }
 })
